@@ -13,10 +13,10 @@ export class FetchdataService {
     return this.http.get('https://jsonplaceholder.typicode.com/todos');
    }
    getApi() {
-    return this.http.get('http://localhost:8080/postagens?page=0&size=2');
+    return this.http.get('http://localhost:8080/postagens?page=0&size=5');
    }
    getApipage(page:number) {
-    return this.http.get(`http://localhost:8080/postagens?page=${page}&size=2`);
+    return this.http.get(`http://localhost:8080/postagens?page=${page}&size=5`);
    }
 
 }

@@ -1,10 +1,13 @@
 <div *ngFor="let d of data.content " >
-  <p>"id" = {{ d.id }}</p>
-  <p>"titulo" = {{ d.titulo }}</p>
-  <p>"texto" = {{ d.texto }}</p>
-  <hr>
+  <div class="pl-2">
+    <p >"id" = {{ d.id }}</p>
+    <p>"titulo" = {{ d.titulo }}</p>
+    <p >"texto" = {{ d.texto }}</p>
+    
+  </div>
+ 
 </div>
-<nav aria-label="...">
+<nav aria-label="..." class="d-flex justify-content-center">
   <ul class="pagination">
     <div *ngIf="data.pageable.pageNumber > 0">
       <li class="page-item ">

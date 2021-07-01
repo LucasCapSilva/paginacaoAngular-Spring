@@ -8,30 +8,33 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   data: any;
-  pages = [{id:0}]
+  listaPagina=[0];
   
   constructor(
     private fetchData: FetchdataService
   ) { }
 
   ngOnInit(){
-this.getData()
-this.totalPages()
+  this.getData()
+ 
   }
 
   totalPages(){
-
+    this.listaPagina.splice(0)
     for (let index = 0; index <= this.data.totalPages; index++) {
-      this.pages.push({id:index});
-      
+      this.listaPagina.push(index);
     }
+    this.listaPagina.splice(this.data.totalPages,this.data.totalPages)
+    console.log(this.data.totalPages);
+    console.log("totaldePaginas ");
+   
   }
   getData() {
     this.fetchData.getApi().subscribe(
       (data) => {
         this.data = data;
-        console.log("legal")
-        console.log(JSON.stringify(this.data.content))
+        this.totalPages()
+       
       }
     );
   }
@@ -40,8 +43,7 @@ this.totalPages()
     this.fetchData.getApipage(page).subscribe(
       (data) => {
         this.data = data;
-        console.log("legal")
-        console.log(JSON.stringify(this.data.content))
+    
       }
     );
   }

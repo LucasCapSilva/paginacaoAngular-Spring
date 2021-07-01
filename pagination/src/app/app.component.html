@@ -6,21 +6,22 @@
 </div>
 <nav aria-label="...">
   <ul class="pagination">
-    <li class="page-item ">
-      <a class="page-link" (click)="proximaPagina(data.pageable.pageNumber-1)">Previous</a>
-    </li>
-
-    <div *ngIf="data.pageable.pageNumber >= 0; else elseBlock">
-      <li class="page-item disabled"><a class="page-link" >{{data.pageable.pageNumber+1}}</a></li>
-      </div>
-    <ng-template #elseBlock> <li class="page-item"><a class="page-link" href="#">{{data.pageable.pageNumber+1}}</a></li></ng-template>
+    <div *ngIf="data.pageable.pageNumber > 0">
+      <li class="page-item ">
+        <a class="page-link"  href="#" (click)="proximaPagina(data.pageable.pageNumber-1)">Previous</a>
+      </li>
+    </div>
  
-    <li class="page-item disabled"><a class="page-link" href="#">total de paginas{{data.totalPages}}</a></li>
-     
+      <div *ngFor="let item of listaPagina">
+        <div *ngIf="data.pageable.pageNumber >= 0; else elseBlock">
+          <li class="page-item " (click)="proximaPagina(item)"><a class="page-link" href="#">{{item+1}}</a></li>
+        </div>
+        <ng-template #elseBlock> <li class="page-item " (click)="proximaPagina(item)"><a class="page-link" href="#">{{item}}</a></li></ng-template>
+      </div>
 
     <div *ngIf="data.pageable.pageNumber != data.totalPages-1;">
       <li class="page-item">
-        <a class="page-link" (click)="proximaPagina(data.pageable.pageNumber+1)">Next</a>
+        <a class="page-link"  href="#" (click)="proximaPagina(data.pageable.pageNumber+1)">Next</a>
       </li>
     </div>
     
